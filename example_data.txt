@@ -1,0 +1,1 @@
+{"post": [{"id": "1", "author": "example_author", "content": "Example_content"}, {"id": "2", "author": "Example_autor", "content": "Example1"}, {"id": "3", "author": "Example_autor", "content": "Example2"}]}
