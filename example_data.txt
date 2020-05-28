@@ -1,1 +1,1 @@
-{"post": [{"id": "1", "author": "example_author", "content": "Example_content"}, {"id": "2", "author": "Example_autor", "content": "Example1"}, {"id": "3", "author": "Example_autor", "content": "Example2"}]}
+{"post": [{"id": "1", "author": "example_author", "content": "Example_content"}, {"id": "3", "author": "Example_autor", "content": "Example2"}, {"id": "3", "author": "Example_autor", "content": "asdasd"}, {"id": "4", "author": "Example_autor", "content": "qqqq"}, {"id": "5", "author": "Example_autor", "content": "Example_content"}]}

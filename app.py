@@ -23,6 +23,31 @@ def strfdelta(tdelta):
     return result
 
 
+class ForumZad5(Resource):
+    Example_JSON_wpis = [
+        {"id": 1, "author_id": 1, "overriding_wpis_id": 0, "odpowiedzi_wpis_array": [2], "content": "Example_content"},
+        {"id": 2, "author_id": 2, "overriding_wpis_id": 1, "odpowiedzi_wpis_array": [3, 4],
+         "content": "Example_content2"},
+        {"id": 3, "author_id": 1, "overriding_wpis_id": 2, "odpowiedzi_wpis_array": [], "content": "Example_content3"},
+        {"id": 4, "author_id": 2, "overriding_wpis_id": 2, "odpowiedzi_wpis_array": [], "content": "Example_content4"}]
+
+    Example_JSON_autor = [{"id": 1, "name": "Marek", "nazwisko": "Demkowicz", "Wpisy_autora_array": [1, 3]},
+                          {"id": 2, "name": "Jan", "nazwisko": "Kowalski", "Wpisy_autora_array": [2, 4]}]
+
+    def get(self, Example_JSON_wpis=Example_JSON_wpis, Example_JSON_autor=Example_JSON_autor):
+        return json.dumps({"Example_JSON_wpis": Example_JSON_wpis, "Example_JSON_autor": Example_JSON_autor})
+
+    def post(self, example_data=example_data):
+        new_post = request.get_json()
+        new_post["id"] = str(len(example_data["post"]) + 1)
+        example_data['post'].append(new_post)
+
+        with open('example_data.txt', 'w') as outfile:
+            json.dump(example_data, outfile)
+
+        return {'you sent:': new_post}
+
+
 class Forum(Resource):
 
     def get(self, example_data=example_data):
@@ -152,6 +177,7 @@ class FarmGame(Resource):
 
 api.add_resource(Forum, '/Forum')
 api.add_resource(FarmGame, '/FarmGame')
+api.add_resource(ForumZad5, "/ForumZad5")
 
 if __name__ == '__main__':
     app.run(debug=True)
