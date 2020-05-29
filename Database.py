@@ -70,11 +70,15 @@ class DataBase:
                 isHarvested integer
                 );
                 """
+
+                sql_insert_init = """INSERT INTO Farms (farmId,gold ,productionLimit,timeOfharvest,timeOfsowing,costOfsowing,updateCost,growTime,isHarvested)
+                                VALUES( 1,    40 ,20,"20/05/2020 12:53:56","20/05/2020 12:53:31",5,10,10,1);   """
                 self.creating_new_db = False
 
                 if conn is not None:
 
                     self.execSql(conn, sql_create_table)
+                    self.execSql(conn, sql_insert_init)
                 else:
                     print("Error! cannot create the database connection.")
         except Error as e:
