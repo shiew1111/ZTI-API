@@ -77,7 +77,7 @@ class FarmGame(Resource):
                 if action == "Sowing":
                     costOfSowing = DataBase().sqlSelectJson(farmId=farmId)['costOfSowing']
 
-                    if gold <= costOfSowing:
+                    if gold >= costOfSowing:
                         StrTimeOFHarvest = now + timedelta(
                             seconds=DataBase().sqlSelectJson(farmId="1")['growTime'])
                         StrTimeOFHarvest.strftime("%d/%m/%Y %H:%M:%S")

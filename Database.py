@@ -1,4 +1,5 @@
 import sqlite3
+from datetime import datetime
 from sqlite3 import Error
 
 import os.path
@@ -70,15 +71,19 @@ class DataBase:
                 isHarvested integer
                 );
                 """
+                now = datetime.now()
+                now.strftime("%d/%m/%Y %H:%M:%S")
+                sql_insert_init = """INSERT INTO Farms (farmId,gold ,productionLimit,costOfsowing,updateCost,growTime,isHarvested,timeOfharvest,timeOfsowing)
+                                             VALUES(?,?,?,?,?,?,?,?,?);"""
+                insert_values_tuble= (1,30,20,10,10,10,1,now.strftime("%d/%m/%Y %H:%M:%S"),now.strftime("%d/%m/%Y %H:%M:%S"))
 
-                sql_insert_init = """INSERT INTO Farms (farmId,gold ,productionLimit,timeOfharvest,timeOfsowing,costOfsowing,updateCost,growTime,isHarvested)
-                                VALUES( 1,    40 ,20,"20/05/2020 12:53:56","20/05/2020 12:53:31",5,10,10,1);   """
+
                 self.creating_new_db = False
 
                 if conn is not None:
 
                     self.execSql(conn, sql_create_table)
-                    self.execSql(conn, sql_insert_init)
+                    self.execSql(conn, sql_insert_init,insert_values_tuble)
                 else:
                     print("Error! cannot create the database connection.")
         except Error as e:
@@ -99,3 +104,6 @@ class DataBase:
         except Error as e:
             print(e)
 
+
+
+DataBase()
