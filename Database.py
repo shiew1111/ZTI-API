@@ -75,15 +75,15 @@ class DataBase:
                 now.strftime("%d/%m/%Y %H:%M:%S")
                 sql_insert_init = """INSERT INTO Farms (farmId,gold ,productionLimit,costOfsowing,updateCost,growTime,isHarvested,timeOfharvest,timeOfsowing)
                                              VALUES(?,?,?,?,?,?,?,?,?);"""
-                insert_values_tuble= (1,30,20,10,10,10,1,now.strftime("%d/%m/%Y %H:%M:%S"),now.strftime("%d/%m/%Y %H:%M:%S"))
-
+                insert_values_tuble = (
+                1, 30, 20, 10, 10, 10, 1, now.strftime("%d/%m/%Y %H:%M:%S"), now.strftime("%d/%m/%Y %H:%M:%S"))
 
                 self.creating_new_db = False
 
                 if conn is not None:
 
                     self.execSql(conn, sql_create_table)
-                    self.execSql(conn, sql_insert_init,insert_values_tuble)
+                    self.execSql(conn, sql_insert_init, insert_values_tuble)
                 else:
                     print("Error! cannot create the database connection.")
         except Error as e:
@@ -103,7 +103,6 @@ class DataBase:
 
         except Error as e:
             print(e)
-
 
 
 DataBase()
